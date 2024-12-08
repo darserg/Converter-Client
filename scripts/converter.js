@@ -1,17 +1,20 @@
 document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent default form submission
+  event.preventDefault(); // Prevent form submission
 
   const fileInput = document.getElementById('fileInput');
   if (fileInput.files.length === 0) {
-    alert("Please select a JPG file.");
+    alert("Please select a file.");
     return;
   }
 
   const file = fileInput.files[0];
 
-  // Check if the file is a JPEG
-  if (!file.type.startsWith('image/jpeg')) {
-    alert("Only JPG images are supported.");
+  // Validate file type
+  if (
+    (conversionType === 'jpg-to-png' && !file.type.startsWith('image/jpeg')) ||
+    (conversionType === 'png-to-jpg' && !file.type.startsWith('image/png'))
+  ) {
+    alert(`Please select a valid ${conversionType === 'jpg-to-png' ? 'JPG' : 'PNG'} file.`);
     return;
   }
 
@@ -20,28 +23,31 @@ document.getElementById('uploadForm').addEventListener('submit', async (event) =
   reader.onload = function (e) {
     const img = new Image();
     img.onload = function () {
-      // Create a canvas and set its dimensions to match the image resolution
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = img.width; // Set canvas width to image width
-      canvas.height = img.height; // Set canvas height to image height
+      canvas.width = img.width;
+      canvas.height = img.height;
 
-      // Draw the image on the canvas
       ctx.drawImage(img, 0, 0);
 
-      // Convert canvas to PNG
-      const pngDataUrl = canvas.toDataURL('image/png');
+      let outputDataUrl, outputFilename;
+      if (conversionType === 'jpg-to-png') {
+        outputDataUrl = canvas.toDataURL('image/png');
+        outputFilename = 'converted-image.png';
+      } else if (conversionType === 'png-to-jpg') {
+        outputDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+        outputFilename = 'converted-image.jpg';
+      }
 
-      // Set the download link
       const downloadLink = document.getElementById('downloadLink');
-      downloadLink.href = pngDataUrl;
-      downloadLink.download = 'converted-image.png';
+      downloadLink.href = outputDataUrl;
+      downloadLink.download = outputFilename;
       downloadLink.style.display = 'block';
-      downloadLink.textContent = 'Download Converted PNG';
+      downloadLink.textContent = `Download ${conversionType === 'jpg-to-png' ? 'PNG' : 'JPG'} File`;
     };
 
-    img.src = e.target.result; // Set image source to file's data URL
+    img.src = e.target.result;
   };
 
-  reader.readAsDataURL(file); // Read the file as a data URL
+  reader.readAsDataURL(file);
 });
