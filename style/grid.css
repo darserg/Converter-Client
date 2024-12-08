@@ -1,0 +1,36 @@
+@media screen and (orientation: landscape) {
+    
+}
+
+@media screen and (orientation: portrait) {
+    
+}
+
+body {
+    font-size: 2vh;
+}
+
+.box {
+    border-radius: 30px;
+    display: block;
+    position: relative;
+    height: 30vh;
+    width: 30vw;
+    padding: 1%;
+    margin: 5%;
+
+    label {
+        font-size: 5vh;
+        padding: 1vh;
+        margin-left: 2vw;
+        display: block;
+    }
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

@@ -1,0 +1,23 @@
+:root {
+    --primary-color: #272727;
+    --font-color: #c0c0c0;
+    --sidebar: #202020;
+    --shadow: #101010;
+    --url-color: #808080;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: var(--url-color);
+}
+
+.box {
+    border: 1px solid black;
+    box-shadow: 7px 10px 5px var(--shadow);
+    background-color: var(--sidebar);
+}
