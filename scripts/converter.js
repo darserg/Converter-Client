@@ -1,53 +1,78 @@
-document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent form submission
-
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('uploadForm');
   const fileInput = document.getElementById('fileInput');
-  if (fileInput.files.length === 0) {
-    alert("Please select a file.");
+  const downloadLinksContainer = document.getElementById('downloadLinks');
+
+  // Ensure required elements exist
+  if (!form || !fileInput || !downloadLinksContainer) {
+    console.error('Required elements are missing in the DOM.');
     return;
   }
 
-  const file = fileInput.files[0];
+  // Handle form submission
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  // Validate file type
-  if (
-    (conversionType === 'jpg-to-png' && !file.type.startsWith('image/jpeg')) ||
-    (conversionType === 'png-to-jpg' && !file.type.startsWith('image/png'))
-  ) {
-    alert(`Please select a valid ${conversionType === 'jpg-to-png' ? 'JPG' : 'PNG'} file.`);
-    return;
-  }
+    const files = fileInput.files;
 
-  const reader = new FileReader();
+    if (!files.length) {
+      alert('Please select at least one file.');
+      return;
+    }
 
-  reader.onload = function (e) {
-    const img = new Image();
-    img.onload = function () {
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = img.width;
-      canvas.height = img.height;
+    // Clear previous download links
+    downloadLinksContainer.innerHTML = '';
 
-      ctx.drawImage(img, 0, 0);
-
-      let outputDataUrl, outputFilename;
-      if (conversionType === 'jpg-to-png') {
-        outputDataUrl = canvas.toDataURL('image/png');
-        outputFilename = 'converted-image.png';
-      } else if (conversionType === 'png-to-jpg') {
-        outputDataUrl = canvas.toDataURL('image/jpeg', 0.9);
-        outputFilename = 'converted-image.jpg';
+    Array.from(files).forEach((file) => {
+      // Validate file type based on conversion type
+      if (
+        (conversionType === 'jpg-to-png' && !file.type.startsWith('image/jpeg')) ||
+        (conversionType === 'png-to-jpg' && !file.type.startsWith('image/png'))
+      ) {
+        alert(`File ${file.name} is not a valid ${conversionType === 'jpg-to-png' ? 'JPG' : 'PNG'} file.`);
+        return;
       }
 
-      const downloadLink = document.getElementById('downloadLink');
-      downloadLink.href = outputDataUrl;
-      downloadLink.download = outputFilename;
-      downloadLink.style.display = 'block';
-      downloadLink.textContent = `Download ${conversionType === 'jpg-to-png' ? 'PNG' : 'JPG'} File`;
-    };
+      const reader = new FileReader();
 
-    img.src = e.target.result;
-  };
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
 
-  reader.readAsDataURL(file);
+          ctx.drawImage(img, 0, 0);
+
+          // Determine output format
+          let outputDataUrl, outputFilename;
+          if (conversionType === 'jpg-to-png') {
+            outputDataUrl = canvas.toDataURL('image/png');
+            outputFilename = `${file.name.split('.')[0]}-converted.png`;
+          } else if (conversionType === 'png-to-jpg') {
+            outputDataUrl = canvas.toDataURL('image/jpeg', 0.9); // Use 90% quality for JPG
+            outputFilename = `${file.name.split('.')[0]}-converted.jpg`;
+          }
+
+          // Create and display download link
+          const link = document.createElement('a');
+          link.href = outputDataUrl;
+          link.download = outputFilename;
+          link.textContent = `Download ${outputFilename}`;
+          link.style.display = 'block';
+
+          downloadLinksContainer.appendChild(link);
+        };
+
+        img.src = e.target.result;
+      };
+
+      reader.onerror = () => {
+        alert(`Failed to read file: ${file.name}`);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  });
 });

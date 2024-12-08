@@ -10,15 +10,15 @@
     <!--Upload files-->
     <div class="box">
       <form id="uploadForm">
-        <input type="file" id="fileInput" accept="image/jpeg" />
+        <label for="fileInput">Upload PNG files:</label>
+        <input type="file" id="fileInput" accept="image/png" multiple />
         <button type="submit">Upload</button>
       </form>
     </div>
     <!--Upload files-->
     <!--Download files-->
     <div class="box">
-      <canvas id="canvas" style="display: none"></canvas>
-      <a id="downloadLink" style="display: none">Download Converted Image</a>
+      <div id="downloadLinks"></div>
     </div>
     <!--Download files-->
     <script src="scripts/converter.js"></script>
