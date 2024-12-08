@@ -9,16 +9,18 @@
   <body>
     <!--Upload files-->
     <div class="box">
-      <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" id="fileInput" name="file" />
+      <form id="uploadForm">
+        <input type="file" id="fileInput" accept="image/jpeg" />
         <button type="submit">Upload</button>
       </form>
     </div>
     <!--Upload files-->
+    <!--Download files-->
     <div class="box">
-      <form id="downloadForm">
-        <button>Download</button>
-      </form>
+      <canvas id="canvas" style="display: none"></canvas>
+      <a id="downloadLink" style="display: none">Download Converted Image</a>
     </div>
+    <!--Download files-->
   </body>
+  <script src="scripts/converter.js"></script>
 </html>
