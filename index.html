@@ -8,22 +8,28 @@
   </head>
   <body>
     <!--Sidebar-->
-
-    <!--Sidebar-->
-    <!--Upload files-->
-    <div class="box">
-      <form id="uploadForm">
-        <label for="fileInput">Upload JPG files:</label>
-        <input type="file" id="fileInput" accept="image/jpeg" multiple />
-        <div class="center">
-          <button type="submit">Convert</button>
-        </div>
-      </form>
+    <div class="sidebar">
+      <a href="#" class="active">JPG to PNG</a>
+      <a href="/png-jpg.html">PNG to JPG</a>
     </div>
-    <!--Upload files-->
-    <!--Download files-->
-    <div class="box">
-      <div id="downloadLinks"></div>
+    <!--Sidebar-->
+    <div class="content">
+      <!--Upload files-->
+      <div class="box">
+        <form id="uploadForm">
+          <label for="fileInput">Upload JPG files:</label>
+          <input type="file" id="fileInput" accept="image/jpeg" multiple />
+          <div class="center">
+            <button type="submit" class="convert">Convert</button>
+          </div>
+        </form>
+      </div>
+      <!--Upload files-->
+      <!--Download files-->
+      <div class="box">
+        <label for="fileOuput">Your Images: </label>
+        <div id="downloadLinks"></div>
+      </div>
     </div>
     <!--Download files-->
     <script src="scripts/converter.js"></script>

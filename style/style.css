@@ -21,3 +21,20 @@ a {
     box-shadow: 7px 10px 5px var(--shadow);
     background-color: var(--sidebar);
 }
+
+.sidebar {
+    background-color: var(--sidebar);
+    a {
+        text-decoration: none;
+    }
+
+    a.active {
+        background-color: var(--shadow);
+    }
+
+    a:hover {
+        background-color: black;
+        color: white;
+        transition: 0.5s;
+    }
+}
