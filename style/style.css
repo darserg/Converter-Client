@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #272727;
+    --primary-color: #232323;
     --font-color: #c0c0c0;
     --sidebar: #202020;
     --shadow: #101010;
@@ -9,11 +9,12 @@
 body {
     background-color: var(--primary-color);
     color: var(--font-color);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 a {
     color: var(--url-color);
+    text-decoration: none;
 }
 
 .box {

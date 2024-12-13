@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/RegAuthStyle.css">
 </head>
 <body>
+    <section class="reg-auth" id="registration">
+        <div class="reg-auth-card">
+            <h1>Registration</h1>
 
+            <form action="/submit-form" method="POST" id="reg-form">
+                <input type="text" name="login" placeholder="Login" maxlength="40" minlength="3" required />
+                <input type="password" name="password" placeholder="Password" maxlength="40" minlength="8" required />
+                <input type="password" name="password" placeholder="Confirm password" maxlength="40" minlength="8" required />
+
+                <button class="btn-send" type="submit">Register</button>
+                <span>Already have an account?</span>
+                <a href="authentication.html">Log in</a>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
