@@ -9,16 +9,16 @@
   <body>
     <!--Sidebar-->
     <div class="sidebar">
-      <a href="/jpg-png.html">JPG to PNG</a>
-      <a href="#" class="active">PNG to JPG</a>
+      <a href="#" class="active">JPG to PNG</a>
+      <a href="/png-jpg.html">PNG to JPG</a>
     </div>
     <!--Sidebar-->
     <div class="content">
       <!--Upload files-->
       <div class="box">
         <form id="uploadForm">
-          <label for="fileInput" id="upload">Upload PNG files:</label>
-          <input type="file" id="fileInput" accept="image/png" multiple />
+          <label for="fileInput">Upload JPG files:</label>
+          <input type="file" id="fileInput" accept="image/jpeg" multiple />
           <div class="center">
             <button type="submit" class="convert">Convert</button>
           </div>
@@ -27,14 +27,14 @@
       <!--Upload files-->
       <!--Download files-->
       <div class="box">
-        <label for="fileOuput">Your Images:</label>
+        <label for="fileOuput">Your Images: </label>
         <div id="downloadLinks"></div>
       </div>
-      <!--Download files-->
     </div>
+    <!--Download files-->
     <script src="scripts/converter.js"></script>
     <script>
-      conversionType = "png-to-jpg";
+      const conversionType = "jpg-to-png";
     </script>
   </body>
 </html>
