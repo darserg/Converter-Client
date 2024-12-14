@@ -2,6 +2,7 @@
     --primary-color: #232323;
     --bg-color: #212121;
     --font-color: #c0c0c0;
+    --message-color: #ff0004;
     --shadow: #101010;
     --url-color: #808080;
     --input-color: #2a2a2a;
@@ -21,7 +22,7 @@
     position: relative;
     display: block;
     width: 32rem;
-    height: 24rem;
+    height: 26rem;
     border-radius: 3rem;
     text-align: center;
     align-content: center;
@@ -29,7 +30,6 @@
 }
 
 .reg-auth-card h1 {
-    margin: 0 auto 6% auto;
     font-size: 2rem;
     color: var(--font-color);
 }
@@ -71,4 +71,22 @@
 .reg-auth-card button:active {
     scale: 100%;
     background-color: var(--input-color);
+}
+
+.messages {
+    margin-top: 0.2rem;
+    display: block;
+    width: 100%;
+    height: 2rem;
+}
+
+.message {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+    font-size: large;
+    color: var(--message-color);
 }
