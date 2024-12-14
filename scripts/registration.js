@@ -44,7 +44,7 @@ document.getElementById('reg-form').addEventListener('submit', async function (e
             successMessage.style.color = 'green';
             successMessage.style.opacity = '1';
             setTimeout(() => {
-                    window.location.href = '/Pages/jpg-png.html';
+                    window.location.href = 'jpg-png.html';
                 },
                 1000
             );
