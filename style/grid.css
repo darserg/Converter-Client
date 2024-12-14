@@ -14,27 +14,40 @@ body {
     margin: 0;
 }
 
+.content {
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.converter-block {
+    margin: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
 .box {
     border-radius: 30px;
-    display: block;
+    display: inline-block;
     position: relative;
-    height: 30vh;
-    width: 30vw;
-    padding: 1%;
-    margin: 5%;
+    height: 25rem;
+    width: 25rem;
+    padding: 1rem;
+    margin: 10rem 5rem;
 
     label {
-        font-size: 5vh;
-        padding: 1vh;
-        margin-left: 2vw;
+        font-size: xx-large;
+        padding: 1%;
         display: block;
     }
 }
 
 .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
+    display: inline-block;
+    position: relative;
+    margin: auto;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -55,11 +68,10 @@ body {
 }
 
 .convert {
-    position: absolute;
-    display: inline-block;
+    display: flex;
+    position: relative;
     box-sizing: border-box;
     padding: 1vw;
-    margin: 0 10vw;
     border: 1px solid var(--shadow);
     background-color: var(--shadow);
     border-radius: 50px;

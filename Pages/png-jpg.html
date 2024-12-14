@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aboba Converter</title>
 
     <link rel="stylesheet" href="/style/grid.css" />
     <link rel="stylesheet" href="/style/style.css" />
-  </head>
-  <body>
+</head>
+<body>
     <!--Sidebar-->
     <div class="sidebar">
-      <a href="jpg-png.html">JPG to PNG</a>
-      <a href="#" class="active">PNG to JPG</a>
+        <a href="jpg-png.html">JPG to PNG</a>
+        <a href="#" class="active">PNG to JPG</a>
     </div>
     <!--Sidebar-->
     <div class="content">
-      <!--Upload files-->
-      <div class="box">
-        <form id="uploadForm">
-          <label for="fileInput" id="upload">Upload PNG files:</label>
-          <input type="file" id="fileInput" accept="image/png" multiple />
-          <div class="center">
-            <button type="submit" class="convert">Convert</button>
-          </div>
-        </form>
-      </div>
-      <!--Upload files-->
-      <!--Download files-->
-      <div class="box">
-        <label for="fileOuput">Your Images: </label>
-        <div id="downloadLinks"></div>
-      </div>
+        <div class="converter-block">
+            <!--Upload files-->
+            <div class="box">
+                <form id="uploadForm">
+                    <label for="fileInput" id="upload">Upload PNG files:</label>
+                    <input type="file" id="fileInput" accept="image/png" multiple />
+                </form>
+            </div>
+            <!--Upload files-->
+            <div class="center">
+                <button type="submit" class="convert">Convert</button>
+            </div>
+            <!--Download files-->
+            <div class="box">
+                <label for="downloadLinks" id="download">Your Images: </label>
+                <div id="downloadLinks"></div>
+            </div>
+            <!--Download files-->
+        </div>
     </div>
-    <!--Download files-->
+
     <script src="/scripts/converter.js"></script>
     <script>
-      const conversionType = "png-to-jpg";
+        const conversionType = "png-to-jpg";
     </script>
-  </body>
+</body>
 </html>
