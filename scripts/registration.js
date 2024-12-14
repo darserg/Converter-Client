@@ -50,7 +50,6 @@ document.getElementById('reg-form').addEventListener('submit', async function (e
             );
         }
         if (json.value.message === 'User already exists') {
-            existsMessage.classList.add('visible');
             existsMessage.style.opacity = '1';
             setTimeout(() => {
                     existsMessage.style.opacity = '0';
