@@ -29,12 +29,12 @@
             <div class="box">
                 <form id="uploadForm">
                     <label for="fileInput" id="upload">Upload PNG files:</label>
-                    <input type="file" id="fileInput" accept="image/png" multiple />
+                    <input type="file" id="fileInput" accept="image/png" multiple="multiple" />
                 </form>
             </div>
             <!--Upload files-->
             <div class="center">
-                <button type="submit" class="convert">Convert</button>
+                <button form="uploadForm" type="submit" class="convert">Convert</button>
             </div>
             <!--Download files-->
             <div class="box">
