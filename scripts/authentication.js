@@ -29,6 +29,7 @@ document.getElementById('auth-form').addEventListener('submit', async function (
             sessionStorage.setItem("user", JSON.stringify({
                 id: json.value.user.id,
                 login: json.value.user.login,
+                premium: json.value.user.premium,
             }));
             console.log(sessionStorage.getItem("user"));
             successMessage.style.color = 'green';

@@ -1,4 +1,4 @@
-const url = 'https://deciding-logically-piglet.ngrok-free.app/users/reg';
+const url = 'https://deciding-logically-piglet.ngrok-free.app';
 
 document.getElementById('reg-form').addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -26,7 +26,7 @@ document.getElementById('reg-form').addEventListener('submit', async function (e
         }
 
         try {
-            const response = await fetch(url, {
+            const response = await fetch(`${url}/users/reg`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,15 +37,31 @@ document.getElementById('reg-form').addEventListener('submit', async function (e
             console.log(json);
 
             if (json.value.success) {
+                try {
+                    const loginResponse = await fetch(`${url}/sessions/auth`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+                    json = await loginResponse.json();
+                    console.log(json);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+
                 sessionStorage.setItem("user", JSON.stringify({
                     id: json.value.user.id,
                     login: json.value.user.login,
+                    premium: json.value.user.premium,
                 }));
                 console.log(sessionStorage.getItem("user"));
                 successMessage.style.color = 'green';
                 successMessage.style.opacity = '1';
                 setTimeout(() => {
-                        window.location.href = 'jpg-png.html';
+                        window.location.href = 'plan.html';
                     },
                     1000
                 );
