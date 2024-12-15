@@ -1,3 +1,11 @@
+:root {
+    --bg-color: #212121;
+    --message-color: #ff0004;
+    --input-color: #2a2a2a;
+    --button: #171717;
+    --border-color2: #303030;
+}
+
 @media screen and (orientation: landscape) {
     div.content { margin-left: 20vw;}
 }
@@ -59,6 +67,34 @@ body {
     height: 100%;
     position: fixed;
     overflow: auto;
+
+    .user {
+        display: flex;
+        position: absolute;
+        margin: 2rem;
+        bottom: 0;
+        font-size: x-large;
+
+        #avatar {
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: inline-grid;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            background-color: var(--message-color);
+        }
+
+        #username {
+            justify-content: center;
+            align-items: center;
+            display: inline-grid;
+            height: 3rem;
+            margin-left: 1rem;
+            position: relative;
+        }
+    }
 }
 
 .sidebar a {
@@ -78,4 +114,34 @@ body {
     color: var(--font-color);
     font-size: 2vh;
     text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    bottom: 3rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    opacity: 0.9;
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+.dropdown-content a {
+    padding: 1rem;
+    border: 1px solid var(--border-color2);
+    background-color: var(--shadow);
+    border-radius: 1rem;
+    font-size: medium;
+    color: var(--font-color);
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--input-color);
+    color: var(--shadow);
+}
+
+.user:hover .dropdown-content {
+    display: block;
 }
