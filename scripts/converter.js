@@ -1,3 +1,9 @@
+const url = 'https://deciding-logically-piglet.ngrok-free.app/sessions';
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+document.getElementById('avatar').innerText = user.login.charAt(0);
+document.getElementById('username').innerText = user.login;
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('uploadForm');
   const fileInput = document.getElementById('fileInput');
@@ -72,7 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`Failed to read file: ${file.name}`);
       };
 
+      fetch(`${url}/upd/${user.id}`, {
+        method: 'PUT',
+      }).then(r => console.log(r)).catch(e => console.log(e));
+
       reader.readAsDataURL(file);
     });
   });
 });
+
+async function LogOut() {
+  try {
+    const response = await fetch(`${url}/close/${user.id}`, {
+      method: 'PUT',
+    });
+    json = await response.json();
+    console.log(json);
+
+    window.location.href = 'authentication.html';
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
